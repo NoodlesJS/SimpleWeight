@@ -10,8 +10,8 @@ export const splashStyle = StyleSheet.create({
     },
     splashText: {
         fontSize: type.header,
-        fontWeight: "bold",
         color: colors.secondary,
-        marginBottom: spacing.xl
+        marginBottom: spacing.xl,
+        fontFamily: 'senR'
     }
 });
