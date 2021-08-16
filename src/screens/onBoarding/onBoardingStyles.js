@@ -3,11 +3,13 @@ import { type, colors, spacing } from "../../theme";
 
 const { width } = Dimensions.get('window')
 export const onBoardingStyles = StyleSheet.create({
-    container: {
-        width,
+    wrapper: {
+        flex: 1,
         paddingHorizontal: spacing.medium,
         paddingTop: spacing.yuge,
         paddingBottom: spacing.large,
+    },
+    container: {
         flex: 1,
         justifyContent: 'space-between'
     },

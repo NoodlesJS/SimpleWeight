@@ -17,18 +17,6 @@ const OnBoardS1 = ({index}) => {
                     <TextInput style={onBoardingStyles.input} />
                 </View>
             </View>
-            <View style={onBoardingStyles.buttonGroup}>
-                <Text style={onBoardingStyles.backButton}>Go back</Text>
-                <View style={onBoardingStyles.paginationGroup}>
-                    <View style={index == 1? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
-                    <View style={index == 2? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
-                    <View style={index == 3? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
-                </View>
-                <View style={onBoardingStyles.button}>
-                    <AntDesign name="arrowright" size={32} color="black" />
-                </View>
-                
-            </View>
         </View>
     )
 }
