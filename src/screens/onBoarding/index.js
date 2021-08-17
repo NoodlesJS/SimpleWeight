@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { View, Text, Button } from 'react-native'
+import React, { useState, useRef } from 'react'
+import { View, Text, Pressable } from 'react-native'
 import { onBoardingStyles } from './onBoardingStyles'
 import { AntDesign } from '@expo/vector-icons'
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Swiper from 'react-native-swiper'
 
 import OnBoardS1 from './OnBoardS1'
 import OnBoardS2 from "./OnBoardS2"
@@ -12,31 +13,41 @@ import OnBoardS3 from "./OnBoardS3"
 const Stack = createNativeStackNavigator();
 
 export default function onBoarding() {
-    const [index, setIndex] = useState(3);
+    const swipeRef = useRef(null);
+    const [index, setIndex] = useState(1);
+
+    function handleBackPress() {
+        if(index > 1) {
+            swipeRef.current.scrollBy(-1, true)
+            setIndex(index - 1);
+        }
+    }
+    function handleForwardPress() {
+        if(index < 3) {
+            swipeRef.current.scrollBy(1, true)
+            setIndex(index + 1);
+        }
+    }
+
     return (
         <View style={onBoardingStyles.wrapper}>
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="OnBoard1">
-                    <Stack.Screen name="OnBoard1" component={OnBoardS1} />
-                    <Stack.Screen name="OnBoard2" component={OnBoardS2} />
-                    <Stack.Screen name="OnBoard3" component={OnBoardS3} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <Swiper showsPagination={false} scrollEnabled={false} loop={false} ref={swipeRef}>
+                <OnBoardS1 />
+                <OnBoardS2 />
+                <OnBoardS3 />
+            </Swiper>
+            
             {/* button group */}
             <View style={onBoardingStyles.buttonGroup}>
-                <Text style={onBoardingStyles.backButton}>Go back</Text>
+                <Text style={onBoardingStyles.backButton} onPress={handleBackPress}>Go back</Text>
                 <View style={onBoardingStyles.paginationGroup}>
                     <View style={index == 1? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                     <View style={index == 2? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                     <View style={index == 3? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                 </View>
-                <View style={onBoardingStyles.button} onPress={() => navigation.push("OnBoard2")}>
+                <Pressable style={onBoardingStyles.button} onPress={handleForwardPress}>
                     <AntDesign name="arrowright" size={32} color="black" />
-                </View> 
-                <Button
-                    title="Go to Details"
-                    onPress={() => navigation.navigate('OnBoard2')}
-                />
+                </Pressable> 
             </View>
         </View>
     )

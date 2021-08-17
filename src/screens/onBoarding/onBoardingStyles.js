@@ -5,6 +5,7 @@ const { width } = Dimensions.get('window')
 export const onBoardingStyles = StyleSheet.create({
     wrapper: {
         flex: 1,
+        width,
         paddingHorizontal: spacing.medium,
         paddingTop: spacing.yuge,
         paddingBottom: spacing.large,

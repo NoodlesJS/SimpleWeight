@@ -4,7 +4,6 @@ import { onBoardingStyles } from './onBoardingStyles'
 import { AntDesign } from '@expo/vector-icons'
 
 const OnBoardS1 = ({index}) => {
-    
     return (
         <View style={onBoardingStyles.container}>
             <View>
