@@ -134,7 +134,7 @@ export default function onBoarding() {
             
             {/* button group */}
             <View style={index == 1? onBoardingStyles.buttonGroup: onBoardingStyles.hide}>
-                <Text style={onBoardingStyles.backButton} onPress={handleBackPress}>Go back</Text>
+                <Text style={{color: 'rgba(0, 0, 0, 0)'}}>Go back</Text>
                 <View style={onBoardingStyles.paginationGroup}>
                     <View style={index == 1? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                     <View style={index == 2? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
