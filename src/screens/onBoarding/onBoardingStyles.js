@@ -23,6 +23,9 @@ export const onBoardingStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
+    hide: {
+        display: 'none'
+    },
     paginationGroup: {
         flexDirection: "row"
     },
@@ -59,7 +62,8 @@ export const onBoardingStyles = StyleSheet.create({
         fontFamily: 'senR',
         fontSize: type.body,
         color: colors.gray_medium,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        lineHeight: 50
     },
     paginationActive: {
         marginHorizontal: spacing.small,
