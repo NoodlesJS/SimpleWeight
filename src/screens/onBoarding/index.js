@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { useForm, Controller } from 'react-hook-form'
 import Swiper from 'react-native-swiper'
 
-export default function onBoarding() {
+export default function onBoarding({navigation}) {
     const { control, handleSubmit, formState: { errors } } = useForm();
     const swipeRef = useRef(null);
     const [index, setIndex] = useState(1);
@@ -211,7 +211,7 @@ export default function onBoarding() {
             </View>
 
             <View style={index == 4? onBoardingStyles.buttonGroup: onBoardingStyles.hide}>
-                <TouchableOpacity style={onBoardingStyles.takeHomeButton} activeOpacity={0.7}>
+                <TouchableOpacity style={onBoardingStyles.takeHomeButton} activeOpacity={0.7} onPress={() => navigation.replace('home')}>
                     <Text style={onBoardingStyles.takeHomeButtonText}>Take me home</Text>
                 </TouchableOpacity> 
             </View>

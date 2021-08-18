@@ -9,6 +9,7 @@ export const onBoardingStyles = StyleSheet.create({
         paddingHorizontal: spacing.medium,
         paddingTop: spacing.yuge,
         paddingBottom: spacing.large,
+        backgroundColor: 'white'
     },
     container: {
         flex: 1,
