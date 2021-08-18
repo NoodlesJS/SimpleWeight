@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { View, Text, Pressable, TextInput, Button } from 'react-native'
+import { View, Text, Pressable, TextInput, Image } from 'react-native'
 import { onBoardingStyles } from './onBoardingStyles'
 import { AntDesign } from '@expo/vector-icons'
 import { useForm, Controller } from 'react-hook-form'
@@ -20,7 +20,6 @@ export default function onBoarding() {
         }
     }
     const onSubmitScreen1 = ({name}) => {
-        console.log(name)
         setName(name)
         transitionScreen()
     }
@@ -42,13 +41,18 @@ export default function onBoarding() {
 
     return (
         <View style={onBoardingStyles.wrapper}>
-            <Swiper showsPagination={false} scrollEnabled={true} loop={false} ref={swipeRef}>
+            <Swiper showsPagination={false} scrollEnabled={false} loop={false} ref={swipeRef}>
                 {/* onBoard - 1 */}
                 <View style={onBoardingStyles.container}>
                     <View>
+                        <View style={onBoardingStyles.gifGroup}>
+                            <Image
+                                style={onBoardingStyles.gif} 
+                                source={require("../../assets/gifs/man_hands.gif")}
+                            />
+                        </View>
                         <View style={onBoardingStyles.headerTextGroup}>
-                            <Text style={onBoardingStyles.textHeader}>Welcome to SimpleWeight</Text>
-                            <Text style={onBoardingStyles.textSub}>Lets get you started!</Text>
+                            <Text style={onBoardingStyles.textHeader}>Lets get you started!</Text>
                         </View>
                         <View style={onBoardingStyles.formGroup}>
                             <Text style={onBoardingStyles.inputLabel}>What's your name?</Text>
@@ -78,7 +82,7 @@ export default function onBoarding() {
                     <View>
                         <View style={onBoardingStyles.headerTextGroup}>
                             <Text style={onBoardingStyles.textHeader}>Welcome to SimpleWeight</Text>
-                            <Text style={onBoardingStyles.textSub}>Nice to meet you {name}</Text>
+                            <Text style={onBoardingStyles.textSub}>Nice to meet you {name}!</Text>
                         </View>
                         <View style={onBoardingStyles.formGroup}>
                             <Text style={onBoardingStyles.inputLabel}>What's your current weight?</Text>
@@ -127,6 +131,7 @@ export default function onBoarding() {
                                 defaultValue=""
                             />
                             {errors.goal && <Text style={{color: 'red', paddingTop: 4}}>This is required.</Text>}
+                            <Text style={onBoardingStyles.backButton}>Skip for now</Text>
                         </View>
                     </View>
                 </View>

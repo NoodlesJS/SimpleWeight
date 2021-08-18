@@ -15,9 +15,11 @@ export const onBoardingStyles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     headerTextGroup: {
-        marginBottom: spacing.xl
+        marginBottom: spacing.base
     },
-    formGroup: {},
+    gifGroup: {
+        marginBottom: spacing.base
+    },
     buttonGroup: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -49,6 +51,11 @@ export const onBoardingStyles = StyleSheet.create({
         borderColor: colors.gray_light,
         borderRadius: 10,
         paddingHorizontal: spacing.base
+    },
+    gif: {
+        width: 75,
+        height: 75,
+        left: -10
     },
     button: {
         height: 70,
