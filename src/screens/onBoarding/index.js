@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { View, Text, Pressable, TextInput, Image } from 'react-native'
+import { View, Text, Pressable, TextInput, Image, TouchableOpacity } from 'react-native'
 import { onBoardingStyles } from './onBoardingStyles'
 import { AntDesign } from '@expo/vector-icons'
 import { useForm, Controller } from 'react-hook-form'
@@ -10,8 +10,8 @@ export default function onBoarding() {
     const swipeRef = useRef(null);
     const [index, setIndex] = useState(1);
     const [name, setName] = useState('User')
-    const [currentWeight, setCurrentWeight] = useState(0)
-    const [goalWeight, setGoalWeight] = useState(null);
+    const [currentWeight, setCurrentWeight] = useState('')
+    const [goalWeight, setGoalWeight] = useState('');
 
     function handleBackPress() {
         if(index > 1) {
@@ -33,7 +33,7 @@ export default function onBoarding() {
     }
 
     const transitionScreen = () => {
-        if(index < 3) {
+        if(index < 4) {
             swipeRef.current.scrollBy(1, true)
             setIndex(index + 1);
         }
@@ -80,9 +80,14 @@ export default function onBoarding() {
                 {/* onBoard - 2 */}
                 <View style={onBoardingStyles.container}>
                     <View>
+                        <View style={onBoardingStyles.gifGroup}>
+                            <Image
+                                style={onBoardingStyles.gif} 
+                                source={require("../../assets/gifs/man_hands.gif")}
+                            />
+                        </View>
                         <View style={onBoardingStyles.headerTextGroup}>
-                            <Text style={onBoardingStyles.textHeader}>Welcome to SimpleWeight</Text>
-                            <Text style={onBoardingStyles.textSub}>Nice to meet you {name}!</Text>
+                            <Text style={onBoardingStyles.textHeader}>Nice to meet you {name}!</Text>
                         </View>
                         <View style={onBoardingStyles.formGroup}>
                             <Text style={onBoardingStyles.inputLabel}>What's your current weight?</Text>
@@ -109,9 +114,14 @@ export default function onBoarding() {
                 {/* onBoard - 3 */}
                 <View style={onBoardingStyles.container}>
                     <View>
+                        <View style={onBoardingStyles.gifGroup}>
+                            <Image
+                                style={onBoardingStyles.gif} 
+                                source={require("../../assets/gifs/man_hands.gif")}
+                            />
+                        </View>
                         <View style={onBoardingStyles.headerTextGroup}>
-                            <Text style={onBoardingStyles.textHeader}>Welcome to SimpleWeight</Text>
-                            <Text style={onBoardingStyles.textSub}>Lets get you started!</Text>
+                            <Text style={onBoardingStyles.textHeader}>Thanks!</Text>
                         </View>
                         <View style={onBoardingStyles.formGroup}>
                             <Text style={onBoardingStyles.inputLabel}>What's your goal weight?</Text>
@@ -131,7 +141,33 @@ export default function onBoarding() {
                                 defaultValue=""
                             />
                             {errors.goal && <Text style={{color: 'red', paddingTop: 4}}>This is required.</Text>}
-                            <Text style={onBoardingStyles.backButton}>Skip for now</Text>
+                            <Text style={onBoardingStyles.backButton} onPress={handleSubmit(onSubmitScreen3)}>Skip for now</Text>
+                        </View>
+                    </View>
+                </View>
+
+                {/* onBoard - 4 */}
+                <View style={onBoardingStyles.container}>
+                    <View>
+                        <View style={onBoardingStyles.headerTextGroup}>
+                            <Text style={onBoardingStyles.textHeader}>Welcome to SimpleWeigh!</Text>
+                            <Text style={onBoardingStyles.textSub}>You're all set.</Text>
+                        </View>
+                        <View style={onBoardingStyles.resultsGroup}>
+                            <View style={onBoardingStyles.currentWeight}>
+                                <Text style={onBoardingStyles.resultsHeader}>Current weight</Text>
+                                <Text style={onBoardingStyles.resultsSubHeader}>{currentWeight === ''? 'Not set' : `${currentWeight} lbs`}</Text>
+                            </View>
+                            <View style={onBoardingStyles.goalWeight}>
+                                <Text style={onBoardingStyles.resultsHeader}>Goal weight</Text>
+                                <Text style={onBoardingStyles.resultsSubHeader}>{goalWeight === ''? "Skipped" : `${goalWeight} lbs`}</Text>
+                            </View>
+                        </View>
+                        <View style={onBoardingStyles.gifConGroup}>
+                            <Image
+                                style={onBoardingStyles.gifCon} 
+                                source={require("../../assets/gifs/confetti.gif")}
+                            />
                         </View>
                     </View>
                 </View>
@@ -172,6 +208,12 @@ export default function onBoarding() {
                 <Pressable style={onBoardingStyles.button} onPress={handleSubmit(onSubmitScreen3)}>
                     <AntDesign name="arrowright" size={32} color="black" />
                 </Pressable> 
+            </View>
+
+            <View style={index == 4? onBoardingStyles.buttonGroup: onBoardingStyles.hide}>
+                <TouchableOpacity style={onBoardingStyles.takeHomeButton} activeOpacity={0.7}>
+                    <Text style={onBoardingStyles.takeHomeButtonText}>Take me home</Text>
+                </TouchableOpacity> 
             </View>
         </View>
     )
