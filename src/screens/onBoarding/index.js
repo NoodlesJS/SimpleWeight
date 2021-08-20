@@ -52,7 +52,7 @@ export default function onBoarding({navigation}) {
                             />
                         </View>
                         <View style={onBoardingStyles.headerTextGroup}>
-                            <Text style={onBoardingStyles.textHeader}>Lets get you started!</Text>
+                            <Text style={onBoardingStyles.textHeader}>Lets get started!</Text>
                         </View>
                         <View style={onBoardingStyles.formGroup}>
                             <Text style={onBoardingStyles.inputLabel}>What's your name?</Text>
