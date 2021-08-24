@@ -182,7 +182,7 @@ export default function onBoarding({navigation}) {
                     <View style={index == 3? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                 </View>
                 <Pressable style={onBoardingStyles.button} onPress={handleSubmit(onSubmitScreen1)}>
-                    <AntDesign name="arrowright" size={32} color="black" />
+                    <AntDesign name="arrowright" size={32} color="white" />
                 </Pressable> 
             </View>
 
@@ -194,7 +194,7 @@ export default function onBoarding({navigation}) {
                     <View style={index == 3? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                 </View>
                 <Pressable style={onBoardingStyles.button} onPress={handleSubmit(onSubmitScreen2)}>
-                    <AntDesign name="arrowright" size={32} color="black" />
+                    <AntDesign name="arrowright" size={32} color="white" />
                 </Pressable> 
             </View>
 
@@ -206,7 +206,7 @@ export default function onBoarding({navigation}) {
                     <View style={index == 3? onBoardingStyles.paginationActive: onBoardingStyles.paginationInactive}></View>
                 </View>
                 <Pressable style={onBoardingStyles.button} onPress={handleSubmit(onSubmitScreen3)}>
-                    <AntDesign name="arrowright" size={32} color="black" />
+                    <AntDesign name="arrowright" size={32} color="white" />
                 </Pressable> 
             </View>
 

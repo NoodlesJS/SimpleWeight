@@ -127,6 +127,6 @@ export const onBoardingStyles = StyleSheet.create({
     takeHomeButtonText: {
         fontFamily: 'senB',
         fontSize: type.subHeader,
-        color: colors.secondary
+        color: colors.white
     }
 })

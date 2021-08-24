@@ -42,23 +42,81 @@ export const homeStyles = StyleSheet.create({
         paddingHorizontal: spacing.large,
         paddingVertical: spacing.medium,
         borderRadius: 20,
-        marginBottom: spacing.base
+        marginBottom: spacing.medium
     },
-    userChipInfoGroup: {},
     chipInfoHeader: {
         fontFamily: 'senB',
         fontSize: type.label,
-        color: colors.secondary,
+        color: colors.white,
         marginBottom: spacing.small
     },
     chipInfoSubHeader: {
         fontFamily: 'senR',
-        color: colors.secondary,
+        color: colors.white,
         fontSize: type.label
     },
     userInfoWeight: {
         fontFamily: 'senB',
-        color: colors.secondary,
+        color: colors.white,
         fontSize: type.header
     },
+    trendsHeader: {
+        fontSize: type.label,
+        fontFamily: 'senR',
+        color: colors.secondary,
+        marginBottom: spacing.small
+    },
+    trendGroup: {},
+    trendGroupRowUpper: {
+        flexDirection: 'row'
+    },
+    trendGroupLower: {
+        flexDirection: 'row'
+    },
+    trendBox: {
+        width: '50%',
+        height: 85,
+        borderColor: 'black',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    borderRight: {
+        borderRightWidth: 0.5,
+        borderBottomWidth: 0.5,
+        borderColor: colors.gray_light,
+    },
+    borderLeft: {
+        borderLeftWidth: 0.5,
+        borderTopWidth: 0.5,
+        borderColor: colors.gray_light,
+    },
+    borderTop: {
+        borderLeftWidth: 0.5,
+        borderBottomWidth: 0.5,
+        borderColor: colors.gray_light,
+    },
+    borderBottom: {
+        borderRightWidth: 0.5,
+        borderTopWidth: 0.5,
+        borderColor: colors.gray_light,
+    },
+    trendIcon: {
+        width: 15,
+        height: 12
+    },
+    trendBoxInfo: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    trendBoxInfoHeader: {
+        fontFamily: 'senB',
+        fontSize: type.subHeader,
+        color: colors.secondary,
+        marginLeft: spacing.small,
+    },
+    trendNameText: {
+        fontFamily: 'senR',
+        fontSize: type.label,
+        marginTop: spacing.tiny
+    }
 });

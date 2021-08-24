@@ -4,6 +4,7 @@ import { homeStyles } from './styles/homeStyles'
 import Welcome from './user/userWelcome';
 import UserChip from './user/userChip';
 import HomeTabs from './homeTabs/HomeTabs'
+import HomeTrends from './homeTrends/HomeTrends';
 
 export default function index() {
     return (
@@ -14,10 +15,11 @@ export default function index() {
                 </View>
                 <Welcome />
                 <UserChip />
+                <HomeTrends />
             </View>
-            <View style={homeStyles.TabContainer}>
+            {/* <View style={homeStyles.TabContainer}>
                 <HomeTabs />
-            </View>
+            </View> */}
         </View>
     )
 }
