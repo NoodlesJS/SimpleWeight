@@ -10,18 +10,21 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     // // <OnBoarding />
-    // <Home />
     <NavigationContainer>
-      <Stack.Navigator 
-        screenOptions={{
-          headerShown: false,
-          detachPreviousScreen: true
-          }}
-      >
-        <Stack.Screen name="onBoarding" component={OnBoarding} />
-        <Stack.Screen name="home" component={MainApp} />
-      </Stack.Navigator>
+      <MainApp />
     </NavigationContainer>
+    
+    // <NavigationContainer>
+    //   <Stack.Navigator 
+    //     screenOptions={{
+    //       headerShown: false,
+    //       detachPreviousScreen: true
+    //       }}
+    //   >
+    //     <Stack.Screen name="onBoarding" component={OnBoarding} />
+    //     <Stack.Screen name="home" component={MainApp} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 }
 
