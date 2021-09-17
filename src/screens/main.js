@@ -8,6 +8,8 @@ import Statistics_icon from '../assets/images/statistics_icon.png'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {  BottomSheetModal,  BottomSheetModalProvider,} from '@gorhom/bottom-sheet';
+import BottomSheet from '@gorhom/bottom-sheet';
+import InputWeight from '../components/InputWeight';
 
 const Tab = createBottomTabNavigator();
 
@@ -76,7 +78,8 @@ const FAB = ({children, onPress}) => {
 
 export default function main() {
     const bottomSheetModalRef = useRef(null);
-    const snapPoints = useMemo(() => ['25%', '50%'], []);
+    const bottomSheetRef = useRef(null);
+    const snapPoints = useMemo(() => ['25%', '60%'], []);
     const openModal = () => {
         bottomSheetModalRef.current?.present();
       }
@@ -91,7 +94,9 @@ export default function main() {
                             height: 65, 
                             borderTopStartRadius: 30, 
                             borderTopEndRadius: 30, 
-                            borderTopWidth: 0
+                            borderTopWidth: 0,
+                            backgroundColor: 'white',
+                            // elevation: 20
                         }
                     }}
                 >
@@ -138,14 +143,30 @@ export default function main() {
                     ref={bottomSheetModalRef}
                     index={1}
                     snapPoints={snapPoints}
+                    style={bottomSheetStyle.shadow}
+                    handleComponent={null}
                 >
-                    <View style={{flex: 1}}>
-                        <Text>Some text here</Text>
-                    </View>
+                    <InputWeight />
                 </BottomSheetModal>
             </View>
         </BottomSheetModalProvider>
     )
 }
 
-
+const bottomSheetStyle = StyleSheet.create({
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: -4,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        backgroundColor: "white",
+        elevation: 15,
+    },
+    shadowTab: {
+        backgroundColor: 'white',
+        elevation: 3
+    }
+})
