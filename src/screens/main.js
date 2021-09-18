@@ -1,5 +1,7 @@
-import React, { useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useMemo, useRef, useEffect } from 'react'
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import { useAtom } from 'jotai';
+import { bottomSheetSwitch } from '../stores/globalInputs';
 import Home from './home';
 import Statistics from './statistics';
 import { colors, type } from '../theme';
@@ -7,7 +9,7 @@ import Home_icon from '../assets/images/home_icon.png'
 import Statistics_icon from '../assets/images/statistics_icon.png'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {  BottomSheetModal,  BottomSheetModalProvider,} from '@gorhom/bottom-sheet';
+import {  BottomSheetModal,  BottomSheetModalProvider, BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import BottomSheet from '@gorhom/bottom-sheet';
 import InputWeight from '../components/InputWeight';
 
@@ -77,12 +79,25 @@ const FAB = ({children, onPress}) => {
 }
 
 export default function main() {
+    const [bottomSwitch, setBottomSwitch] = useAtom(bottomSheetSwitch);
     const bottomSheetModalRef = useRef(null);
     const bottomSheetRef = useRef(null);
-    const snapPoints = useMemo(() => ['25%', '60%'], []);
+    const snapPoints = useMemo(() => ['25%', '46%'], []);
     const openModal = () => {
         bottomSheetModalRef.current?.present();
-      }
+    }
+    const closeModal = () => {
+        bottomSheetModalRef.current?.dismiss();
+    }
+
+    useEffect(() => {
+        if(bottomSwitch) {
+            openModal();
+            return;
+        }
+        closeModal();
+    }, [bottomSwitch]);
+
     return (
         <BottomSheetModalProvider>
             <View style={{flex: 1}}>
@@ -125,7 +140,7 @@ export default function main() {
                             tabPress: (e) => {
                                 e.preventDefault();
                                 
-                                openModal()
+                                setBottomSwitch(true)
                             }
                         }}
                     />
@@ -145,6 +160,8 @@ export default function main() {
                     snapPoints={snapPoints}
                     style={bottomSheetStyle.shadow}
                     handleComponent={null}
+                    enableContentPanningGesture={false}
+                    backdropComponent={BottomSheetBackdrop}
                 >
                     <InputWeight />
                 </BottomSheetModal>
@@ -164,6 +181,8 @@ const bottomSheetStyle = StyleSheet.create({
         shadowRadius: 4,
         backgroundColor: "white",
         elevation: 15,
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20
     },
     shadowTab: {
         backgroundColor: 'white',

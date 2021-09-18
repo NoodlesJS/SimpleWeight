@@ -19,10 +19,11 @@ export const homeStyles = StyleSheet.create({
     },
     menu: {
         height: 30,
-        width: 30,
-        backgroundColor: colors.primary,
-        borderRadius: 50,
-        
+        width: 30,        
+    },
+    settingsIcon:{
+        height: 24,
+        width: 24
     },
     // userWelcome styles
     userWelcomeContainer: {
